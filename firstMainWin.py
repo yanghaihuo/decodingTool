@@ -7,24 +7,24 @@
 # WARNING! All changes made in this file will be lost!
 
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(904, 579)
+        MainWindow.resize(908, 572)
         MainWindow.setMouseTracking(True)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(10, 0, 881, 521))
-        self.tabWidget.setObjectName("tabWidget")
+        self.help_tab = QtWidgets.QTabWidget(self.centralwidget)
+        self.help_tab.setGeometry(QtCore.QRect(10, 0, 891, 521))
+        self.help_tab.setObjectName("help_tab")
         self.codingConvert_tab = QtWidgets.QWidget()
         self.codingConvert_tab.setObjectName("codingConvert_tab")
         self.layoutWidget = QtWidgets.QWidget(self.codingConvert_tab)
-        self.layoutWidget.setGeometry(QtCore.QRect(0, 10, 869, 481))
+        self.layoutWidget.setGeometry(QtCore.QRect(0, 10, 891, 481))
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
@@ -52,8 +52,6 @@ class Ui_MainWindow(object):
         self.encode_buttonGroup.addButton(self.encode_rbtn)
         self.verticalLayout_4.addWidget(self.encode_rbtn)
         self.gridLayout.addLayout(self.verticalLayout_4, 0, 0, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(50, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem, 0, 7, 1, 1)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.pushButton = QtWidgets.QPushButton(self.layoutWidget)
@@ -118,8 +116,6 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.str1_lineEdit.sizePolicy().hasHeightForWidth())
         self.str1_lineEdit.setSizePolicy(sizePolicy)
-        self.str1_lineEdit.setStatusTip("")
-        self.str1_lineEdit.setInputMask("")
         self.str1_lineEdit.setMaxLength(12)
         self.str1_lineEdit.setObjectName("str1_lineEdit")
         self.gridLayout_2.addWidget(self.str1_lineEdit, 0, 0, 1, 1)
@@ -136,21 +132,32 @@ class Ui_MainWindow(object):
         self.regex_btn.setObjectName("regex_btn")
         self.gridLayout_2.addWidget(self.regex_btn, 1, 1, 1, 1)
         self.gridLayout.addLayout(self.gridLayout_2, 0, 6, 1, 1)
+        self.removeSpace_btn = QtWidgets.QPushButton(self.layoutWidget)
+        self.removeSpace_btn.setObjectName("removeSpace_btn")
+        self.gridLayout.addWidget(self.removeSpace_btn, 0, 7, 1, 1)
+        self.removeReturn_btn = QtWidgets.QPushButton(self.layoutWidget)
+        self.removeReturn_btn.setObjectName("removeReturn_btn")
+        self.gridLayout.addWidget(self.removeReturn_btn, 1, 7, 1, 1)
         self.verticalLayout.addLayout(self.gridLayout)
         self.outputText = QtWidgets.QPlainTextEdit(self.layoutWidget)
-        self.outputText.setStatusTip("")
         self.outputText.setObjectName("outputText")
         self.verticalLayout.addWidget(self.outputText)
-        self.tabWidget.addTab(self.codingConvert_tab, "")
+        self.help_tab.addTab(self.codingConvert_tab, "")
         self.encryption_decryption_tab = QtWidgets.QWidget()
         self.encryption_decryption_tab.setObjectName("encryption_decryption_tab")
-        self.tabWidget.addTab(self.encryption_decryption_tab, "")
+        self.help_tab.addTab(self.encryption_decryption_tab, "")
+        self.tab = QtWidgets.QWidget()
+        self.tab.setObjectName("tab")
+        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.tab)
+        self.plainTextEdit.setGeometry(QtCore.QRect(0, 0, 891, 501))
+        self.plainTextEdit.setObjectName("plainTextEdit")
+        self.help_tab.addTab(self.tab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 904, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 908, 22))
         self.menubar.setObjectName("menubar")
         self.menuAbout = QtWidgets.QMenu(self.menubar)
         self.menuAbout.setObjectName("menuAbout")
@@ -164,14 +171,14 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.help_tab.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "编码小工具"))
-        self.decode_rbtn.setText(_translate("MainWindow", "解码"))
-        self.encode_rbtn.setText(_translate("MainWindow", "编码"))
+        self.decode_rbtn.setText(_translate("MainWindow", "解码(decode)"))
+        self.encode_rbtn.setText(_translate("MainWindow", "编码(encode)"))
         self.pushButton.setText(_translate("MainWindow", "MD5"))
         self.pushButton_3.setText(_translate("MainWindow", "SHA256"))
         self.html_btn.setText(_translate("MainWindow", "HTML实体字符"))
@@ -186,8 +193,27 @@ class Ui_MainWindow(object):
         self.timestamp_btn.setText(_translate("MainWindow", "时间戳"))
         self.replace_btn.setText(_translate("MainWindow", "文本替换"))
         self.regex_btn.setText(_translate("MainWindow", "正则替换"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.codingConvert_tab), _translate("MainWindow", "编码转换"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.encryption_decryption_tab), _translate("MainWindow", "加解密"))
+        self.removeSpace_btn.setText(_translate("MainWindow", "清除空格"))
+        self.removeReturn_btn.setText(_translate("MainWindow", "清除回车"))
+        self.help_tab.setTabText(self.help_tab.indexOf(self.codingConvert_tab), _translate("MainWindow", "编码转换"))
+        self.help_tab.setTabText(self.help_tab.indexOf(self.encryption_decryption_tab), _translate("MainWindow", "加解密"))
+        self.plainTextEdit.setPlainText(_translate("MainWindow", "支持的字符集：GBK、UTF-8\n"
+                                                                 "支持编码方式：URL、Base64、Hex、时间戳转换、HTML实体字符（待完善）\n"
+                                                                 "支持的文本操作：文本替换、正则替换(待开发)、清空空格、清空回车\n"
+                                                                 "\n"
+                                                                 "\n"
+                                                                 "Hex：\n"
+                                                                 "> 注意：编码格式需要用空格隔开\n"
+                                                                 "Hex编码：31 32 33 \n"
+                                                                 "Hex解码：1 2 3\n"
+                                                                 "\n"
+                                                                 "\n"
+                                                                 "时间戳转换：\n"
+                                                                 "编码格式：1544122322\n"
+                                                                 "解码格式：2018-12-07 02:52:02\n"
+                                                                 "\n"
+                                                                 ""))
+        self.help_tab.setTabText(self.help_tab.indexOf(self.tab), _translate("MainWindow", "help"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
         self.menuAuthor.setTitle(_translate("MainWindow", "Author"))
         self.actionArch.setText(_translate("MainWindow", "Ar3hang1"))

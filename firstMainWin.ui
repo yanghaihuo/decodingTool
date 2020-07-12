@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>904</width>
-    <height>579</height>
+    <width>914</width>
+    <height>547</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -20,19 +20,31 @@
    <string>编码小工具</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QTabWidget" name="help_tab">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>881</width>
+      <width>901</width>
       <height>521</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
     <widget class="QWidget" name="codingConvert_tab">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <attribute name="title">
       <string>编码转换</string>
      </attribute>
@@ -41,13 +53,13 @@
        <rect>
         <x>0</x>
         <y>10</y>
-        <width>869</width>
+        <width>891</width>
         <height>481</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <property name="sizeConstraint">
-        <enum>QLayout::SetMinimumSize</enum>
+        <enum>QLayout::SetMaximumSize</enum>
        </property>
        <property name="leftMargin">
         <number>0</number>
@@ -60,122 +72,6 @@
        </item>
        <item>
         <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="0">
-          <layout class="QVBoxLayout" name="verticalLayout_4">
-           <item>
-            <widget class="QRadioButton" name="decode_rbtn">
-             <property name="text">
-              <string>解码</string>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-             <attribute name="buttonGroup">
-              <string notr="true">encode_buttonGroup</string>
-             </attribute>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="encode_rbtn">
-             <property name="text">
-              <string>编码</string>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="checked">
-              <bool>false</bool>
-             </property>
-             <attribute name="buttonGroup">
-              <string notr="true">encode_buttonGroup</string>
-             </attribute>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="0" column="7">
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>50</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="1" column="6">
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>MD5</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_3">
-             <property name="text">
-              <string>SHA256</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="1" column="4">
-          <widget class="QPushButton" name="html_btn">
-           <property name="text">
-            <string>HTML实体字符</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="5">
-          <widget class="QPushButton" name="unicode_btn">
-           <property name="text">
-            <string>Unicode</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QPushButton" name="base64_btn">
-           <property name="text">
-            <string>Base64</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="4">
-          <widget class="QPushButton" name="hex_btn">
-           <property name="text">
-            <string>HEX</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="8">
-          <widget class="QPushButton" name="exchange_btn">
-           <property name="text">
-            <string>Exchange</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="8">
-          <widget class="QPushButton" name="clear_btn">
-           <property name="text">
-            <string>Clear All</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QPushButton" name="url_btn">
-           <property name="text">
-            <string>URL</string>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="0">
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
@@ -206,6 +102,31 @@
            </item>
           </layout>
          </item>
+         <item row="0" column="4">
+          <widget class="QPushButton" name="hex_btn">
+           <property name="text">
+            <string>HEX</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="6">
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QPushButton" name="pushButton">
+             <property name="text">
+              <string>MD5</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_3">
+             <property name="text">
+              <string>SHA256</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
          <item row="1" column="5">
           <widget class="QPushButton" name="timestamp_btn">
            <property name="text">
@@ -213,34 +134,116 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="6">
-          <layout class="QGridLayout" name="gridLayout_2">
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="str2_lineEdit">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <widget class="QRadioButton" name="decode_rbtn">
+             <property name="text">
+              <string>解码(decode)</string>
              </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">encode_buttonGroup</string>
+             </attribute>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QLineEdit" name="str1_lineEdit">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
+           <item>
+            <widget class="QRadioButton" name="encode_rbtn">
+             <property name="text">
+              <string>编码(encode)</string>
              </property>
-             <property name="statusTip">
-              <string/>
+             <property name="checkable">
+              <bool>true</bool>
              </property>
-             <property name="inputMask">
-              <string/>
+             <property name="checked">
+              <bool>false</bool>
              </property>
-             <property name="maxLength">
-              <number>12</number>
+             <attribute name="buttonGroup">
+              <string notr="true">encode_buttonGroup</string>
+             </attribute>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="url_btn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>URL</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="7">
+          <widget class="QPushButton" name="removeSpace_btn">
+           <property name="text">
+            <string>清除空格</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="8">
+          <widget class="QPushButton" name="exchange_btn">
+           <property name="text">
+            <string>Exchange</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="8">
+          <widget class="QPushButton" name="clear_btn">
+           <property name="text">
+            <string>Clear All</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QPushButton" name="unicode_btn">
+           <property name="text">
+            <string>Unicode</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="base64_btn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Base64</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QPushButton" name="html_btn">
+           <property name="text">
+            <string>HTML实体</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="7">
+          <widget class="QPushButton" name="removeReturn_btn">
+           <property name="text">
+            <string>清除回车</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="6">
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="1" column="2">
+            <widget class="QPushButton" name="regex_btn">
+             <property name="text">
+              <string>正则替换</string>
              </property>
             </widget>
            </item>
@@ -260,10 +263,33 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="QPushButton" name="regex_btn">
+           <item row="0" column="2">
+            <widget class="QLineEdit" name="str2_lineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="str1_lineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maxLength">
+              <number>12</number>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label">
              <property name="text">
-              <string>正则替换</string>
+              <string>-&gt;</string>
              </property>
             </widget>
            </item>
@@ -272,11 +298,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QPlainTextEdit" name="outputText">
-         <property name="statusTip">
-          <string extracomment="df"/>
-         </property>
-        </widget>
+        <widget class="QPlainTextEdit" name="outputText"/>
        </item>
       </layout>
      </widget>
@@ -286,32 +308,47 @@
       <string>加解密</string>
      </attribute>
     </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>help</string>
+     </attribute>
+     <widget class="QPlainTextEdit" name="plainTextEdit">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>891</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <property name="plainText">
+       <string>支持的字符集：GBK、UTF-8
+支持编码方式：URL、Base64、Hex、时间戳转换、HTML实体字符（待完善）
+支持的文本操作：文本替换、正则替换(待开发)、清空空格、清空回车
+
+
+Hex：
+&gt; 注意：编码格式需要用空格隔开
+Hex编码：31 32 33 
+Hex解码：1 2 3
+
+
+Unicode转换
+编码：\u0031\u0032\u0033
+解码：123
+
+
+时间戳转换：
+编码格式：1544122322
+解码格式：2018-12-07 02:52:02
+
+</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>904</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuAbout">
-    <property name="title">
-     <string>About</string>
-    </property>
-    <widget class="QMenu" name="menuAuthor">
-     <property name="title">
-      <string>Author</string>
-     </property>
-     <addaction name="actionArch"/>
-    </widget>
-    <addaction name="menuAuthor"/>
-   </widget>
-   <addaction name="menuAbout"/>
-  </widget>
   <action name="actionArch">
    <property name="text">
     <string>Ar3hang1</string>
@@ -321,7 +358,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="encode_buttonGroup"/>
   <buttongroup name="code_buttonGroup"/>
+  <buttongroup name="encode_buttonGroup"/>
  </buttongroups>
 </ui>

@@ -2,32 +2,22 @@
 # coding=utf-8
 # Time    : 2020/5/8 00:08
 # Author  : Ar3h
-import hashlib
-import sys
-import time
-import traceback
 
-from PyQt5.QtGui import QIcon, QPixmap
+from hashlib import md5, sha256
+from time import strftime, localtime
+from traceback import format_exc
+
+# from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import *
 from firstMainWin import *
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QPushButton
-import base64
-import sys
-from urllib import parse
+from PyQt5.QtWidgets import QApplication
+from base64 import b64decode, b64encode
+from sys import exit, argv
+from urllib.parse import quote, unquote
 
 """
-TODO：
-✅标签页
-替换文本高亮显示
-正则替换
 
-去换行，去空格
-
-多线程
-文件优化：模块化
-可加载插件
-吸取有点
 """
 
 
@@ -52,16 +42,16 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
             if self.decode_rbtn.isChecked():
                 # 解码 str -> byte -> str
                 for line in text_lines:
-                    text_decode = base64.b64decode(line.encode(encoding=self.ENCODING))
+                    text_decode = b64decode(line.encode(encoding=self.ENCODING))
                     self.outputText.appendPlainText(text_decode.decode(encoding=self.ENCODING))
             else:
                 # 编码 str -> byte -> str
                 for line in text_lines:
-                    text_decode = base64.b64encode(line.encode(encoding=self.ENCODING))
+                    text_decode = b64encode(line.encode(encoding=self.ENCODING))
                     self.outputText.appendPlainText(text_decode.decode(encoding=self.ENCODING))
         except:
             # 打印异常
-            self.outputText.setText(traceback.format_exc())
+            self.outputText.appendPlainText(format_exc())
 
     """url"""
 
@@ -76,17 +66,17 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
                 # 编码quote()
                 print("url编码")
                 for line in text_lines:
-                    text_decode = parse.quote(line, encoding=self.ENCODING)
+                    text_decode = quote(line, encoding=self.ENCODING)
                     self.outputText.appendPlainText(text_decode)
             else:
                 # 解码unquote()
                 print("url解码")
                 for line in text_lines:
-                    text_decode = parse.unquote(line, encoding=self.ENCODING)
+                    text_decode = unquote(line, encoding=self.ENCODING)
                     self.outputText.appendPlainText(text_decode)
 
         except:
-            self.outputText.setText(traceback.format_exc())
+            self.outputText.appendPlainText(format_exc())
 
     """hex"""
 
@@ -103,16 +93,22 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
                 print("hex编码")
                 print(self.ENCODE_METHOD)
                 for line in text_lines:
-                    str_bin = line.encode(self.ENCODING)
-                    hex_str = binascii.hexlify(str_bin).decode(self.ENCODING)
-                    self.outputText.appendPlainText(hex_str)
+                    hex_str = ""
+                    for i in line:
+                        hex_str += str(hex(ord(i))[2:]) + ' '
+                    self.outputText.appendPlainText(hex_str.strip(" "))
             else:
                 # 解码
                 print("hex解码")
                 for line in text_lines:
-                    self.outputText.appendPlainText((binascii.unhexlify(line)).decode())
+                    decode_str = ""
+                    for each_char in line.strip(" ").split(" "):
+                        decode_char = chr(int(each_char, 16))
+                        decode_str += decode_char + " "
+                    self.outputText.appendPlainText(decode_str)
+
         except:
-            self.outputText.appendPlainText(traceback.format_exc())
+            self.outputText.appendPlainText(format_exc())
 
     """replace"""
 
@@ -129,7 +125,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
                 converted_str = line.replace(str1, str2)
                 self.outputText.appendPlainText(converted_str)
         except:
-            self.outputText.setText(traceback.format_exc())
+            self.outputText.appendPlainText(format_exc())
 
     """html"""
 
@@ -153,7 +149,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
                 for line in text_lines:
                     self.outputText.appendPlainText(html.unescape(line))
         except:
-            self.outputText.setText(traceback.format_exc())
+            self.outputText.appendPlainText(format_exc())
 
     """unicode"""
 
@@ -176,9 +172,11 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
                 # 解码
                 print("unicode解码")
                 for line in text_lines:
-                    self.outputText.appendPlainText(str(line))
+                    # line: str:"\\u0031\\u0032\\u0033" -> str:"123"
+                    line_str = line.encode(self.ENCODING).decode("unicode_escape")
+                    self.outputText.appendPlainText(line_str)
         except:
-            self.outputText.setText(traceback.format_exc())
+            self.outputText.appendPlainText(format_exc())
 
     """时间戳
     """
@@ -193,33 +191,55 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
         try:
             for line in text_lines:
                 timestamp = int(line)
-                b = time.localtime(timestamp)
-                dt = time.strftime('%Y-%m-%d %H:%M:%S', b)
+                b = localtime(timestamp)
+                dt = strftime('%Y-%m-%d %H:%M:%S', b)
                 self.outputText.appendPlainText(dt)
 
         except:
-            self.outputText.setText(traceback.format_exc())
+            self.outputText.appendPlainText(format_exc())
 
     """md5"""
 
     @QtCore.pyqtSlot()
     def on_md5_btn_pressed(self):
+        print("md5")
         text = self.inputText.toPlainText()
+        self.outputText.clear()
         try:
-            hash_str = hashlib.md5(text.encode()).hexdigest()
-            self.outputText.setText(hash_str)
+            hash_str = md5(text.encode()).hexdigest()
+            self.outputText.appendPlainText(hash_str)
         except:
-            self.outputText.setText(traceback.format_exc())
+            self.outputText.appendPlainText(format_exc())
 
     """sha256"""
 
     def on_sha256_btn_pressed(self):
+        print("sha256")
         text = self.inputText.toPlainText()
+        self.outputText.clear()
         try:
-            hash_str = hashlib.sha256(text.encode()).hexdigest()
-            self.outputText.setText(hash_str)
+            hash_str = sha256(text.encode()).hexdigest()
+            self.outputText.appendPlainText(hash_str)
         except:
-            self.outputText.setText(traceback.format_exc())
+            self.outputText.appendPlainText(format_exc())
+
+    """清除回车键"""
+
+    @QtCore.pyqtSlot()
+    def on_removeReturn_btn_pressed(self):
+        print("清除回车")
+        text = self.inputText.toPlainText()
+        self.outputText.clear()
+        self.outputText.appendPlainText(text.replace("\n", ""))
+
+    """清除空格"""
+
+    @QtCore.pyqtSlot()
+    def on_removeSpace_btn_pressed(self):
+        print("清除空格")
+        text = self.inputText.toPlainText()
+        self.outputText.clear()
+        self.outputText.appendPlainText(text.replace(" ", ""))
 
     """交换"""
 
@@ -227,8 +247,10 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
     def on_exchange_btn_pressed(self):
         in_text = self.inputText.toPlainText()
         out_text = self.outputText.toPlainText()
-        self.inputText.setText(out_text)
-        self.outputText.setText(in_text)
+        self.inputText.clear()
+        self.outputText.clear()
+        self.inputText.appendPlainText(out_text)
+        self.outputText.appendPlainText(in_text)
 
     """清空"""
 
@@ -241,9 +263,10 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    icon_path = '/Users/arch/Pictures/头像/Hack/6.png'
-    app.setWindowIcon(QIcon(QPixmap(icon_path)))
+    QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
+    app = QApplication(argv)
+    # icon_path = '/Users/arch/Pictures/头像/Hack/6.png'
+    # app.setWindowIcon(QIcon(QPixmap(icon_path)))
     myWin = MyMainWindow()
     myWin.show()
-    sys.exit(app.exec_())
+    exit(app.exec_())
