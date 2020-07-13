@@ -3,9 +3,23 @@
 
 ## 支持的功能
 简单实现了如下功能的编码与解码，可以选择UTF-8或GBK字符集
-- URL
-- base64
-- hex
+- URL  
+- base64  
+- hex  
+- Unicode  
+- 时间戳转换  
+
+图片文件形式的二维码识别  
+文本、文件md5、sha256计算  
+简单文本替换  
+
+## 界面
+![](./images/mainWindow.png)
+
+运行  
+`python3 main.py`  
+
+以上在Mac上测试通过，Windows未做测试，可能会有一些界面错位或者路径问题    
 
 ## TODO
 ### 功能

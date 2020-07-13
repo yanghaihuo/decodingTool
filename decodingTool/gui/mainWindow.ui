@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>669</width>
-    <height>642</height>
+    <width>715</width>
+    <height>618</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -31,7 +31,7 @@
      <rect>
       <x>0</x>
       <y>10</y>
-      <width>671</width>
+      <width>711</width>
       <height>581</height>
      </rect>
     </property>
@@ -59,7 +59,7 @@
        <rect>
         <x>0</x>
         <y>10</y>
-        <width>671</width>
+        <width>703</width>
         <height>644</height>
        </rect>
       </property>
@@ -111,16 +111,6 @@
            </property>
            <property name="text">
             <string>HTML实体</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="5">
-          <widget class="QLineEdit" name="str2_lineEdit">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
            </property>
           </widget>
          </item>
@@ -317,6 +307,16 @@
           </widget>
          </item>
          <item row="1" column="5">
+          <widget class="QLineEdit" name="str2_lineEdit">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
           <widget class="QLineEdit" name="str1_lineEdit">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -329,17 +329,17 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="7">
-          <widget class="QPushButton" name="exchange_btn">
-           <property name="text">
-            <string>Exchange</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="7">
+         <item row="3" column="7">
           <widget class="QPushButton" name="clear_btn">
            <property name="text">
             <string>Clear All</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="7">
+          <widget class="QPushButton" name="exchange_btn">
+           <property name="text">
+            <string>Exchange</string>
            </property>
           </widget>
          </item>
@@ -393,7 +393,8 @@ Unicode转换：
 2018-12-07 02:52:02          --编码--&gt;        1544122322
 
 
-二维码识别、md5校验、sha256校验，直接拖拽文件即可
+文件的二维码识别、md5校验、sha256校验功能：
+直接拖拽文件到输入文本框，会显示为： file:///User/xxxxx  形式路径，然后点击按钮进行相应的解码与编码
 
 </string>
       </property>

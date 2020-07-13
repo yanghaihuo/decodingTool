@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'firstMainWin.ui'
+# Form implementation generated from reading ui file 'mainWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.0
 #
@@ -15,7 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(669, 642)
+        MainWindow.resize(715, 618)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.help_tab = QtWidgets.QTabWidget(self.centralwidget)
-        self.help_tab.setGeometry(QtCore.QRect(0, 10, 671, 581))
+        self.help_tab.setGeometry(QtCore.QRect(0, 10, 711, 581))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -40,7 +40,7 @@ class Ui_MainWindow(object):
         self.codingConvert_tab.setSizePolicy(sizePolicy)
         self.codingConvert_tab.setObjectName("codingConvert_tab")
         self.layoutWidget = QtWidgets.QWidget(self.codingConvert_tab)
-        self.layoutWidget.setGeometry(QtCore.QRect(0, 10, 671, 644))
+        self.layoutWidget.setGeometry(QtCore.QRect(0, 10, 703, 644))
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
@@ -73,14 +73,6 @@ class Ui_MainWindow(object):
         self.html_btn.setSizePolicy(sizePolicy)
         self.html_btn.setObjectName("html_btn")
         self.gridLayout.addWidget(self.html_btn, 0, 2, 1, 1)
-        self.str2_lineEdit = QtWidgets.QLineEdit(self.layoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.str2_lineEdit.sizePolicy().hasHeightForWidth())
-        self.str2_lineEdit.setSizePolicy(sizePolicy)
-        self.str2_lineEdit.setObjectName("str2_lineEdit")
-        self.gridLayout.addWidget(self.str2_lineEdit, 0, 5, 1, 1)
         self.removeReturn_btn = QtWidgets.QPushButton(self.layoutWidget)
         self.removeReturn_btn.setObjectName("removeReturn_btn")
         self.gridLayout.addWidget(self.removeReturn_btn, 3, 5, 1, 1)
@@ -186,6 +178,14 @@ class Ui_MainWindow(object):
         self.base64_btn.setSizePolicy(sizePolicy)
         self.base64_btn.setObjectName("base64_btn")
         self.gridLayout.addWidget(self.base64_btn, 1, 2, 1, 1)
+        self.str2_lineEdit = QtWidgets.QLineEdit(self.layoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.str2_lineEdit.sizePolicy().hasHeightForWidth())
+        self.str2_lineEdit.setSizePolicy(sizePolicy)
+        self.str2_lineEdit.setObjectName("str2_lineEdit")
+        self.gridLayout.addWidget(self.str2_lineEdit, 1, 5, 1, 1)
         self.str1_lineEdit = QtWidgets.QLineEdit(self.layoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -194,13 +194,13 @@ class Ui_MainWindow(object):
         self.str1_lineEdit.setSizePolicy(sizePolicy)
         self.str1_lineEdit.setMaxLength(12)
         self.str1_lineEdit.setObjectName("str1_lineEdit")
-        self.gridLayout.addWidget(self.str1_lineEdit, 1, 5, 1, 1)
-        self.exchange_btn = QtWidgets.QPushButton(self.layoutWidget)
-        self.exchange_btn.setObjectName("exchange_btn")
-        self.gridLayout.addWidget(self.exchange_btn, 0, 7, 1, 1)
+        self.gridLayout.addWidget(self.str1_lineEdit, 0, 5, 1, 1)
         self.clear_btn = QtWidgets.QPushButton(self.layoutWidget)
         self.clear_btn.setObjectName("clear_btn")
-        self.gridLayout.addWidget(self.clear_btn, 6, 7, 1, 1)
+        self.gridLayout.addWidget(self.clear_btn, 3, 7, 1, 1)
+        self.exchange_btn = QtWidgets.QPushButton(self.layoutWidget)
+        self.exchange_btn.setObjectName("exchange_btn")
+        self.gridLayout.addWidget(self.exchange_btn, 1, 7, 1, 1)
         self.verticalLayout.addLayout(self.gridLayout)
         self.outputText = QtWidgets.QPlainTextEdit(self.layoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -248,8 +248,8 @@ class Ui_MainWindow(object):
         self.decode_rbtn.setText(_translate("MainWindow", "解码(decode)"))
         self.encode_rbtn.setText(_translate("MainWindow", "编码(encode)"))
         self.base64_btn.setText(_translate("MainWindow", "Base64"))
-        self.exchange_btn.setText(_translate("MainWindow", "Exchange"))
         self.clear_btn.setText(_translate("MainWindow", "Clear All"))
+        self.exchange_btn.setText(_translate("MainWindow", "Exchange"))
         self.help_tab.setTabText(self.help_tab.indexOf(self.codingConvert_tab), _translate("MainWindow", "编码转换"))
         self.plainTextEdit.setPlainText(_translate("MainWindow", "支持的字符集：GBK、UTF-8\n"
 "支持编码方式：URL、Base64、Hex、时间戳转换、HTML实体字符（待完善）\n"
@@ -272,7 +272,8 @@ class Ui_MainWindow(object):
 "2018-12-07 02:52:02          --编码-->        1544122322\n"
 "\n"
 "\n"
-"二维码识别、md5校验、sha256校验，直接拖拽文件即可\n"
+"文件的二维码识别、md5校验、sha256校验功能：\n"
+"直接拖拽文件到输入文本框，会显示为： file:///User/xxxxx  形式路径，然后点击按钮进行相应的解码与编码\n"
 "\n"
 ""))
         self.help_tab.setTabText(self.help_tab.indexOf(self.tab), _translate("MainWindow", "help"))

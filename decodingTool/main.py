@@ -1,34 +1,27 @@
 #!/usr/local/bin/python3
 # coding = utf-8
-# Time    : 2020/5/8 00:08
+# Time    : 2020/7/10 02:00
 # Author  : Ar3h
+
 import functools
 from hashlib import md5, sha256
 from time import strftime, localtime
 from traceback import format_exc
 
-# from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import *
 
-from decodingTool.gui.firstMainWin import *
+from decodingTool.gui.mainWindow import *
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication
 from base64 import b64decode, b64encode
 from sys import exit, argv
 from urllib.parse import quote, unquote
 
-"""clear outputText
-flush outputText
-"""
-
 
 def intiText():
     def decorator(func):
         @functools.wraps(func)
         def wrapper(self, *args, **kwargs):
-            # 初始化output框
-            # self.outputText.clear()
-            # 执行函数
             try:
                 func(self)
                 self.outputText.repaint()
@@ -51,8 +44,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
         self.ENCODING = "utf-8" if self.utf8_rbtn.isChecked() else "gbk"
         self.app = app
 
-    """base64"""
-
+    # base64
     @intiText()
     @QtCore.pyqtSlot()
     def on_base64_btn_pressed(self):
@@ -67,8 +59,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
                 text_decode = b64encode(line.encode(encoding=self.ENCODING))
                 self.outputText.setPlainText(text_decode.decode(encoding=self.ENCODING))
 
-    """url"""
-
+    # url
     @intiText()
     @QtCore.pyqtSlot()
     def on_url_btn_pressed(self):
@@ -87,8 +78,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
                 text_decode = unquote(line, encoding=self.ENCODING)
                 self.outputText.setPlainText(text_decode)
 
-    """hex"""
-
+    # hex
     @intiText()
     @QtCore.pyqtSlot()
     def on_hex_btn_pressed(self):
@@ -111,8 +101,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
                     decode_str += decode_char
                 self.outputText.setPlainText(decode_str)
 
-    """replace"""
-
+    # replace
     @intiText()
     @QtCore.pyqtSlot()
     def on_replace_btn_pressed(self):
@@ -125,8 +114,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
             converted_str = line.replace(str1, str2)
             self.outputText.setPlainText(converted_str)
 
-    """html"""
-
+    # html
     @intiText()
     @QtCore.pyqtSlot()
     def on_html_btn_pressed(self):
@@ -145,8 +133,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
             for line in text_lines:  # 解码
                 self.outputText.setPlainText(html.unescape(line))
 
-    """unicode"""
-
+    # unicode
     @intiText()
     @QtCore.pyqtSlot()
     def on_unicode_btn_pressed(self):
@@ -163,13 +150,11 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
         else:
             print("unicode解码")
             for line in text_lines:  # 解码
-                # line: str:"\\u0031\\u0032\\u0033" -> str:"123"
+                # line = "\\u0031\\u0032\\u0033":str -> "123":str
                 line_str = line.encode(self.ENCODING).decode("unicode_escape")
                 self.outputText.setPlainText(line_str)
 
-    """时间戳
-    """
-
+    # timestamp
     @intiText()
     @QtCore.pyqtSlot()
     def on_timestamp_btn_pressed(self):
@@ -183,8 +168,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
             dt = strftime('%Y-%m-%d %H:%M:%S', b)
             self.outputText.setPlainText(dt)
 
-    """md5"""
-
+    # md5
     @intiText()
     @QtCore.pyqtSlot()
     def on_md5_btn_pressed(self):
@@ -197,8 +181,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
             hash_str = md5(text.encode()).hexdigest()
         self.outputText.setPlainText(hash_str)
 
-    """sha256"""
-
+    # sha256
     @intiText()
     @QtCore.pyqtSlot()
     def on_sha256_btn_pressed(self):
@@ -229,8 +212,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
             self.outputText.setPlainText(url)
             print(url)
 
-    """清除回车键"""
-
+    # 清除回车
     @intiText()
     @QtCore.pyqtSlot()
     def on_removeReturn_btn_pressed(self):
@@ -238,8 +220,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
         text = self.inputText.toPlainText()
         self.outputText.setPlainText(text.replace("\n", ""))
 
-    """清除空格"""
-
+    # 清除空格
     @intiText()
     @QtCore.pyqtSlot()
     def on_removeSpace_btn_pressed(self):
@@ -248,8 +229,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
         self.outputText.clear()
         self.outputText.setPlainText(text.replace(" ", ""))
 
-    """交换"""
-
+    # exchange
     @intiText()
     @QtCore.pyqtSlot()
     def on_exchange_btn_pressed(self):
@@ -258,8 +238,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
         self.inputText.setPlainText(out_text)
         self.outputText.setPlainText(in_text)
 
-    """清空"""
-
+    # clear all
     @intiText()
     @QtCore.pyqtSlot()
     def on_clear_btn_pressed(self):
@@ -272,8 +251,6 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
 if __name__ == '__main__':
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QApplication(argv)
-    # icon_path = '/Users/arch/Pictures/头像/Hack/6.png'
-    # app.setWindowIcon(QIcon(QPixmap(icon_path)))
     myWin = MyMainWindow(app)
     myWin.show()
     exit(app.exec_())
