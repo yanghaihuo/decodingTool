@@ -8,16 +8,16 @@ from hashlib import md5, sha256
 from time import strftime, localtime
 from traceback import format_exc
 
-from PyQt5.QtWidgets import *
-
-from decodingTool.gui.mainWindow import *
+from gui.mainWindow import *
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import *
 from base64 import b64decode, b64encode
 from sys import exit, argv
 from urllib.parse import quote, unquote
 
 
+# 装饰器，解决outputText不能实时刷新问题
 def intiText():
     def decorator(func):
         @functools.wraps(func)
